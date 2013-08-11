@@ -1,1 +1,6 @@
-Hello world
+{#shots}
+  <div class="shot-list-entry">
+    <img width="139" height="106" src="{image_url}" />
+    <span>{name}</span>
+  </div>
+{/shots}

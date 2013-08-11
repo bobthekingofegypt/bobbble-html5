@@ -93,4 +93,27 @@ body{
 	position: relative;
 }
 
+#view-home .scroll {
+    padding: 0 5px;
+}
+
+.shot-list-entry {
+    background-image: url(../images/shadow@2x.png);
+    background-repeat: no-repeat;
+    background-position: 2px 8px;
+    background-size:145px 111px;
+    padding: 10px 5px 10px 5px;
+    width: 145px;
+    height: 141px;
+    float: left;
+}
+
+.shot-list-entry span {
+    font-size: 10px;
+    width: 100%;
+    text-align: center;
+    display: block;
+    padding-top: 5px;
+}
+
 

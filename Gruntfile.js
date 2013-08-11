@@ -45,6 +45,7 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/*.html',
                     '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
                     '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
+                    '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.dust',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}'
                 ]
             },
@@ -271,10 +272,6 @@ module.exports = function (grunt) {
                         }
                     }
                 }
-            },
-            dev: {
-                src: '<%= yeoman.app %>/scripts/templates',
-                dest: '.tmp/scripts/templates.combined.js'
             }
         },
         jst: {
@@ -301,10 +298,6 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('createDefaultTemplate', function () {
-        grunt.file.write('.tmp/scripts/templates.js', 'this.JST = this.JST || {};');
-    });
-
     grunt.registerTask('server', function (target) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
@@ -314,7 +307,6 @@ module.exports = function (grunt) {
             'clean:server',
             'dust:all',
             'coffee:dist',
-            'createDefaultTemplate',
             'jst',
             'compass:server',
             'connect:livereload',
@@ -325,8 +317,8 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test', [
         'clean:server',
+        'dust:all',
         'coffee',
-        'createDefaultTemplate',
         'jst',
         'compass',
         'connect:test',
@@ -336,7 +328,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'coffee',
-        'createDefaultTemplate',
+        'dust:all',
         'jst',
         'compass:dist',
         'useminPrepare',
