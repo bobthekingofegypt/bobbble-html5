@@ -33,6 +33,10 @@ module.exports = function (grunt) {
                 files: ['test/spec/{,*/}*.coffee'],
                 tasks: ['coffee:test']
             },
+            dustjs: {
+                files: ['<%= yeoman.app %>/scripts/templates/{,*/}*.dust'],
+                tasks: ['dustjs:compile']
+            },
             compass: {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
                 tasks: ['compass']
@@ -45,7 +49,6 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/*.html',
                     '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
                     '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
-                    '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.dust',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}'
                 ]
             },
@@ -256,21 +259,11 @@ module.exports = function (grunt) {
                 rjsConfig: '<%= yeoman.app %>/scripts/main.js'
             }
         },
-        dust: {
-            all: {
+        dustjs: {
+            compile: {
                 files: {
-                    ".tmp/scripts/views.js": "<%= yeoman.app %>/scripts/templates/*.dust"
-                },
-                options: {
-                    deps: {
-                        dust: "dust-core-2.0.2.min.js"
-                    },
-                    wrapper: "amd",
-                    wrapperOptions: {
-                        deps: {
-                            'dust': 'dust' 
-                        }
-                    }
+                    'app/scripts/views.js': ['app/templates/*.dust'],
+                    '.tmp/scripts/views.js': ['<%= yeoman.app %>/scripts/templates/{,*/}*.dust']
                 }
             }
         },
@@ -305,8 +298,8 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'clean:server',
-            'dust:all',
             'coffee:dist',
+            'dustjs',
             'jst',
             'compass:server',
             'connect:livereload',
@@ -317,7 +310,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test', [
         'clean:server',
-        'dust:all',
         'coffee',
         'jst',
         'compass',
@@ -328,7 +320,6 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'coffee',
-        'dust:all',
         'jst',
         'compass:dist',
         'useminPrepare',

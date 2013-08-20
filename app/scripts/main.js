@@ -2,7 +2,11 @@
 'use strict';
 
 require.config({
+    deps: ['main', 'dust', 'jquery'],
     shim: {
+        main: {
+            deps: ['jquery', 'dust']
+        },
         underscore: {
             exports: '_'
         },
@@ -17,13 +21,11 @@ require.config({
             deps: ['jquery'],
             exports: 'jquery'
         },
+        views: {
+            deps: ['dust']
+        },
         dust: {
             exports: 'dust'
-        },
-        views: {
-            deps: [
-                'dust'
-            ]
         }
     },
     paths: {
@@ -38,9 +40,13 @@ require.config({
 require([
     'backbone',
     'routers/router',
-    'dust'
-], function (Backbone, Workspace, dust) {
-    new Workspace();
+    'dust',
+    'underscore',
+    'transition',
+    'views'
+], function (Backbone, Workspace, dust, _, transition) {
+    
+    var router = new Workspace();
     Backbone.history.start();
 
     var w = window;
@@ -63,5 +69,20 @@ require([
     } else {
         w.addEventListener('load', scrollTop, false);
     }
+
+    _.delay(function() {
+        //router.navigate('shot', {trigger: true});
+        
+        /*
+        transition({
+		    'in': document.getElementById('view-shot-details'),
+			out: document.getElementById('view-home'),
+			direction: 'rtl'
+		});
+        */
+        
+    }, 3000);
+
+
 
 });

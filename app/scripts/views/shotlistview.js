@@ -3,9 +3,8 @@ define([
 	'jquery',
     'underscore',
 	'backbone',
-    'views',
     'dust'
-], function ($, _, Backbone, views, dust) {
+], function ($, _, Backbone, dust) {
 	'use strict';
 
     var ShotListView = Backbone.View.extend({
@@ -23,32 +22,18 @@ define([
                 console.log(newImageUrl);
 
                 return { 
+                    shot_id: model.id,
                     image_url: newImageUrl,
                     name: model.player.name
                 }
             });
 
             var self = this;
-            dust.render("app/scripts/templates/test",{ shots : shots },
+            dust.render("test",{ shots : shots },
                  function(err, out) {
                      self.$el.html(out);
                  });
         
-                 /*
-            _.each(this.model.models, function(model) {
-                var json = model.toJSON();
-                console.log(json);
-                var img = $('<img height="200" id="dynamic">'); //Equivalent: $(document.createElement('img'))
-                img.attr('src', json.image_teaser_url);
-                img.appendTo('#imagediv');
-                $(this.el).append(img);
-                //var self = this;
-                //dust.render("app/scripts/templates/test",this.model.toJSON(),function(err,out){
-                //    $(self.el).html(out);
-                //});
-
-            }, this);
-            */
             return this;
         }
     });

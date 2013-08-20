@@ -1,6 +1,6 @@
 {#shots}
   <div class="shot-list-entry">
-    <img width="139" height="106" src="{image_url}" />
+    <a href="#shot/{shot_id}"><img width="139" height="106" src="{image_url}" /></a>
     <span>{name}</span>
   </div>
 {/shots}
