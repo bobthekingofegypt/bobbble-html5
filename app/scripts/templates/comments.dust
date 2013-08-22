@@ -1,0 +1,7 @@
+{#comments}
+    <div class="comment">
+        <img src="{player.avatar_url}" />
+        <div class="author">{player.name}</div>
+        <div class="body-text">{body}</div>
+    </div>
+{/comments}

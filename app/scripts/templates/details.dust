@@ -1,0 +1,30 @@
+<div id="shot-details">
+    <img id="avatar" src="{shot.player.avatar_url}" />
+    <div class="title">{shot.title}</div>
+    <div class="author">by {shot.player.name}, 10 hours ago</div>
+
+    <div class="rounded-holder">
+        <div class="rounded-view">
+        </div>
+        <img src="{shot.image_url}" />
+    </div>
+
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-count">1979</div>
+            <div class="stat-label">views</div>
+        </div>
+        <div class="stat">
+            <div class="stat-count">304</div>
+            <div class="stat-label">likes</div>
+        </div>
+        <div class="stat">
+            <div class="stat-count">21</div>
+            <div class="stat-label">comments</div>
+        </div>
+    </div>
+
+    <div id="comments">
+
+    </div>
+</div>

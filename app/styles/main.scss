@@ -7,7 +7,7 @@ body{
 	margin: 0;
 	padding: 0;
 	height: 100%;
-	background-color: #fff;
+	background-color: #f0f0f0;
 	overflow: hidden;
 	position: relative;
 	word-wrap: break-word;
@@ -133,7 +133,7 @@ body:not(.ios5) .view>.scroll:before{
     background-position: 2px 8px;
     background-size:145px 111px;
     padding: 10px 5px 10px 5px;
-    width: 135px;
+    width: 145px;
     height: 141px;
     float: left;
 }
@@ -377,4 +377,114 @@ body:not(.ios5) .view>.scroll:before{
 		opacity: 0;
 	}
 }
+
+#view-shot-details {
+    background-color: #f0f0f0;
+}
+
+#shot-details {
+    background-image: url(../images/tex-bak.gif);
+    background-size: 50px 50px;
+    width: 100%;
+    height: 340px;
+}
+
+#shot-details img {
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin: 5px 5px 15px 5px;
+}
+
+#shot-details .title {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+    padding: 5px 0 0px 60px;
+}
+
+#shot-details .author {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+    color: #6b7084;
+    margin-top: -1px;
+    margin-left: 60px;
+}
+
+#shot-details .rounded-holder {
+    clear: both;
+    width: 100%;
+    position: relative;
+}
+
+#shot-details .rounded-view {
+    margin: 0 auto;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    width: 296px;
+    height: 223px;
+    border-radius: 10px;
+    background-color: #000;
+    opacity: 0.2;
+}
+
+#shot-details .rounded-holder img {
+    position: absolute;
+    top: 5px;
+    left: 19px;
+    width: 270px;
+    height: 203px;
+}
+
+#shot-details .stats {
+    margin-top: 10px;
+    color: #fff;
+    height: 50px;
+}
+
+#shot-details .stat {
+    width: 33%;
+    float: left;
+}
+
+#shot-details .stat-count {
+    color: #e9e9e9;
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+#shot-details .stat-label {
+    color: #39966c;
+    text-align: center;
+    font-size: 12px;
+    margin-top: -7px;
+}
+
+#comments {
+    clear: both;
+}
+
+#comments .comment {
+    min-height: 80px;
+    margin-bottom: 10px;
+}
+
+#comments .author {
+    padding-top: 7px;
+    margin-left: 58px;
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#comments .body-text {
+    margin-left: 58px;
+    color: #969696;
+    font-size: 14px;
+}
+
+
+
 
