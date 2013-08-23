@@ -1,5 +1,4 @@
 /*global require*/
-'use strict';
 
 require.config({
     deps: ['main', 'dust', 'jquery'],
@@ -42,29 +41,24 @@ require([
     'routers/router',
     'dust',
     'underscore',
-    'transition',
     'views'
-], function (Backbone, Workspace, dust, _, transition) {
-    
-    var router = new Workspace();
+], function (Backbone, Workspace, dust, _) {
+    'use strict';
+    new Workspace();
     Backbone.history.start();
 
     var w = window;
     var d = document;
     var body = d.body;
     // Some useful tips from http://24ways.org/2011/raising-the-bar-on-mobile
-	var supportOrientation = typeof w.orientation != 'undefined',
-		getScrollTop = function(){
-			return w.pageYOffset || d.compatMode === 'CSS1Compat' && d.documentElement.scrollTop ||                 body.scrollTop || 0;
-		},
-		scrollTop = function(){
-			body.style.height = screen.height + 'px';
-			setTimeout(function(){
-				w.scrollTo(0, 0);
-				body.style.height = w.innerHeight + 'px';
-			}, 1);
-		};
-    if (d.readyState == 'complete'){
+    var scrollTop = function(){
+        body.style.height = screen.height + 'px';
+        setTimeout(function(){
+            w.scrollTo(0, 0);
+            body.style.height = w.innerHeight + 'px';
+        }, 1);
+    };
+    if (d.readyState === 'complete'){
         scrollTop();
     } else {
         w.addEventListener('load', scrollTop, false);
@@ -75,10 +69,10 @@ require([
         
         /*
         transition({
-		    'in': document.getElementById('view-shot-details'),
-			out: document.getElementById('view-home'),
-			direction: 'rtl'
-		});
+            'in': document.getElementById('view-shot-details'),
+            out: document.getElementById('view-home'),
+            direction: 'rtl'
+        });
         */
         
     }, 3000);

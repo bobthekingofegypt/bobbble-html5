@@ -1,7 +1,8 @@
-'use strict';
+/*global require, module*/
 var LIVERELOAD_PORT = 35729;
 var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
 var mountFolder = function (connect, dir) {
+    'use strict';
     return connect.static(require('path').resolve(dir));
 };
 
@@ -13,6 +14,7 @@ var mountFolder = function (connect, dir) {
 // templateFramework: 'lodash'
 
 module.exports = function (grunt) {
+    'use strict';
     // load all grunt tasks
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
@@ -171,7 +173,7 @@ module.exports = function (grunt) {
                     baseUrl: '<%= yeoman.app %>/scripts',
                     optimize: 'none',
                     paths: {
-                        'templates': '../../.tmp/scripts/templates'
+                        //'views': '../../.tmp/scripts/views.js'
                     },
                     // TODO: Figure out how to make sourcemaps work with grunt-usemin
                     // https://github.com/yeoman/grunt-usemin/issues/30
@@ -262,18 +264,8 @@ module.exports = function (grunt) {
         dustjs: {
             compile: {
                 files: {
-                    'app/scripts/views.js': ['app/templates/*.dust'],
+                    'app/scripts/views.js': ['<%= yeoman.app %>/scripts/templates/{,*/}*.dust'],
                     '.tmp/scripts/views.js': ['<%= yeoman.app %>/scripts/templates/{,*/}*.dust']
-                }
-            }
-        },
-        jst: {
-            options: {
-                amd: true
-            },
-            compile: {
-                files: {
-                    '.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/templates/*.ejs']
                 }
             }
         },
@@ -300,7 +292,6 @@ module.exports = function (grunt) {
             'clean:server',
             'coffee:dist',
             'dustjs',
-            'jst',
             'compass:server',
             'connect:livereload',
             'open',
@@ -311,7 +302,6 @@ module.exports = function (grunt) {
     grunt.registerTask('test', [
         'clean:server',
         'coffee',
-        'jst',
         'compass',
         'connect:test',
         'mocha'
@@ -320,7 +310,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'coffee',
-        'jst',
+        'dustjs',
         'compass:dist',
         'useminPrepare',
         'requirejs',

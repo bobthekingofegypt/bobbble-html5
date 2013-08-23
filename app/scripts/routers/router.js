@@ -20,7 +20,7 @@ define([
             'shot/:id': 'shot'
 		},
 
-		list: function (param) {
+		list: function () {
             var shotList = new ShotList();
             shotList.fetch({success: function(){
                 $("#content").html(new ShotListView({model: shotList}).el);
@@ -29,6 +29,7 @@ define([
 		},
 
         shot: function(id) {
+            id = parseInt(id);
             console.log("TEST");
             console.log(id);
 
@@ -40,7 +41,7 @@ define([
                 });
 
                 var entry = _.find(this.shotList.models, function(shot) {
-                    return shot.id == id;
+                    return shot.id === id;
                 });
                 var model = new Backbone.Model();
                 model.set({shot: entry, comments: new CommentList({}, {id: entry.id})});

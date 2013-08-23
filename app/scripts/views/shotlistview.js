@@ -1,10 +1,10 @@
-/*global define*/
+/*global define, dust*/
 define([
 	'jquery',
     'underscore',
 	'backbone',
     'dust'
-], function ($, _, Backbone, dust) {
+], function ($, _, Backbone) {
 	'use strict';
 
     var ShotListView = Backbone.View.extend({
@@ -25,14 +25,13 @@ define([
                     shot_id: model.id,
                     image_url: newImageUrl,
                     name: model.player.name
-                }
+                };
             });
 
             var self = this;
-            dust.render("test",{ shots : shots },
-                 function(err, out) {
-                     self.$el.html(out);
-                 });
+            dust.render("test",{ shots : shots }, function(err, out) {
+                self.$el.html(out);
+            });
         
             return this;
         }

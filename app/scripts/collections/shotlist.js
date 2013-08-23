@@ -13,7 +13,7 @@ define([
         url: "http://api.dribbble.com/shots/?per_page=30",
     
         parse: function(resp) {
-            return resp.shots
+            return resp.shots;
         },
 
         sync: function(method, model, options) {
