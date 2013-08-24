@@ -14,8 +14,9 @@
 <body>
     <div id="apploader" class="hide"></div>
 
-    <div class="view" id="view-home">
+    <div class="view hidden" id="view-home">
         <header>
+            <a href="#/" class="header-button header-button-left header-back-button"><button>Back</button></a>
             <h1 style="margin: 0 65px;">Popular</h1>
         </header>
         <div class="scroll">
@@ -23,16 +24,18 @@
             </section>
         </div>
     </div>
+
     <div class="view hidden" id="view-shot-details">
         <header>
-            <a href="#/" class="header-button header-button-left header-back-button"><button>Back</button></a>
-            <h1 style="margin: 0 65px;">Shot Details</h1>
+            <a href="#/" class="header-button header-button-left header-back-button"><button>back</button></a>
+            <h1 style="margin: 0 65px;">shot details</h1>
         </header>
         <div class="scroll">
-            <section id="content2">
+            <section id="content">
             </section>
         </div>
     </div>
+    <header class="fake"></header>
 
     <!-- build:js scripts/main.js -->
     <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>

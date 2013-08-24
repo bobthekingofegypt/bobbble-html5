@@ -21,9 +21,12 @@ define([
 		},
 
 		list: function () {
+            if (this.shotList) {
+                transition.leftToRight('view-home', 'view-shot-details');
+            }
             var shotList = new ShotList();
             shotList.fetch({success: function(){
-                $("#content").html(new ShotListView({model: shotList}).el);
+                $("#view-home section").html(new ShotListView({model: shotList}).el);
             }});
             this.shotList = shotList;
 		},
@@ -34,18 +37,14 @@ define([
             console.log(id);
 
             if (this.shotList) {
-                transition({
-                    'in': document.getElementById('view-shot-details'),
-                    out: document.getElementById('view-home'),
-                    direction: 'rtl'
-                });
+                transition.rightToLeft('view-shot-details', 'view-home');
 
                 var entry = _.find(this.shotList.models, function(shot) {
                     return shot.id === id;
                 });
                 var model = new Backbone.Model();
                 model.set({shot: entry, comments: new CommentList({}, {id: entry.id})});
-                $('#content2').html(new ShotDetailView({model: model}).el);
+                $('#view-shot-details section').html(new ShotDetailView({model: model}).el);
             } else {
                 this.navigate('', {trigger: true});
                 /*

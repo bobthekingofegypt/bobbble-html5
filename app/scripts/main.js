@@ -32,7 +32,8 @@ require.config({
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/underscore/underscore',
         dust: '../bower_components/dustjs-linkedin/dist/dust-core-2.0.2',
-        bootstrap: 'vendor/bootstrap'
+        bootstrap: 'vendor/bootstrap',
+        tappable: 'vendor/tappable'
     }
 });
 
@@ -41,8 +42,9 @@ require([
     'routers/router',
     'dust',
     'underscore',
+    'transition',
     'views'
-], function (Backbone, Workspace, dust, _) {
+], function (Backbone, Workspace, dust, _, transition) {
     'use strict';
     new Workspace();
     Backbone.history.start();
@@ -63,19 +65,19 @@ require([
     } else {
         w.addEventListener('load', scrollTop, false);
     }
+    document.getElementById('view-home').classList.remove('hidden');
+
 
     _.delay(function() {
         //router.navigate('shot', {trigger: true});
-        
         /*
         transition({
+            'out': document.getElementById('view-home'),
             'in': document.getElementById('view-shot-details'),
-            out: document.getElementById('view-home'),
             direction: 'rtl'
         });
         */
-        
-    }, 3000);
+    }, 1000);
 
 
 

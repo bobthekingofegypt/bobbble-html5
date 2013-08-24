@@ -3,8 +3,9 @@ define([
 	'jquery',
     'underscore',
 	'backbone',
+    'tappable',
     'dust'
-], function ($, _, Backbone) {
+], function ($, _, Backbone, tappable) {
 	'use strict';
 
     var ShotDetailView = Backbone.View.extend({
@@ -24,7 +25,7 @@ define([
 
             var self = this;
             dust.render("details",{ shot : model }, function(err, out) {
-                self.$el.html(out);
+               self.$el.html(out);
             });
 
             var comments = this.model.get('comments').toJSON();

@@ -1,0 +1,213 @@
+/**
+ * iOS style screen transitions from 
+ * https://github.com/cheeaun/hackerweb
+ */
+
+.view,
+.view>.scroll,
+.view>header h1,
+.view>header .header-button{
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-duration: 350ms;
+	animation-timing-function: ease-in-out;
+	animation-duration: 350ms;
+}
+
+.sliding{
+	pointer-events: none;
+}
+
+.slide-in-from-right>.scroll{
+	-webkit-animation-name: slideinfromright;
+	animation-name: slideinfromright;
+}
+.slide-in-from-right>header h1{
+	-webkit-animation-name: slidefadeinfromright;
+	animation-name: slidefadeinfromright;
+}
+.slide-in-from-right>header .header-button{
+	-webkit-animation-name: fadein;
+	animation-name: fadein;
+}
+.slide-in-from-right>header .header-back-button{
+	-webkit-animation-name: backinfromcenter;
+	animation-name: backinfromcenter;
+}
+
+.slide-in-from-left>.scroll{
+	-webkit-animation-name: slideinfromleft;
+	animation-name: slideinfromleft;
+}
+.slide-in-from-left>header h1{
+	-webkit-animation-name: slidefadeinfromleft;
+	animation-name: slidefadeinfromleft;
+}
+.slide-in-from-left>header .header-button{
+	-webkit-animation-name: fadein;
+	animation-name: fadein;
+}
+.slide-in-from-left>header .header-back-button{
+	-webkit-animation-name: backinfromleft;
+	animation-name: backinfromleft;
+}
+
+.slide-in-from-bottom{
+	-webkit-animation-name: slideinfrombottom;
+	animation-name: slideinfrombottom;
+}
+
+.slide-out-to-right>.scroll{
+	-webkit-animation-name: slideouttoright;
+	animation-name: slideouttoright;
+}
+.slide-out-to-right>header h1{
+	-webkit-animation-name: slidefadeouttoright;
+	animation-name: slidefadeouttoright;
+}
+.slide-out-to-right>header .header-button{
+	-webkit-animation-name: fadeout;
+	animation-name: fadeout;
+}
+.slide-out-to-right>header .header-back-button{
+	-webkit-animation-name: backouttocenter;
+	animation-name: backouttocenter;
+}
+
+.slide-out-to-left>.scroll{
+	-webkit-animation-name: slideouttoleft;
+	animation-name: slideouttoleft;
+}
+.slide-out-to-left>header h1{
+	-webkit-animation-name: slidefadeouttoleft;
+	animation-name: slidefadeouttoleft;
+}
+.slide-out-to-left>header .header-button{
+	-webkit-animation-name: fadeout;
+	animation-name: fadeout;
+}
+.slide-out-to-left>header .header-back-button{
+	-webkit-animation-name: backouttoleft;
+	animation-name: backouttoleft;
+}
+
+.slide-out-to-bottom{
+	-webkit-animation-name: slideouttobottom;
+	animation-name: slideouttobottom;
+}
+
+@-webkit-keyframes slideinfromright {
+	from { -webkit-transform: translateX(100%); }
+	to { -webkit-transform: translateX(0); }
+}
+@-webkit-keyframes slideinfromleft {
+	from { -webkit-transform: translateX(-100%); }
+	to { -webkit-transform: translateX(0); }
+}
+@-webkit-keyframes slideinfrombottom {
+	from { -webkit-transform: translateY(100%); }
+	to { -webkit-transform: translateY(0); }
+}
+@-webkit-keyframes slideouttoleft {
+	from { -webkit-transform: translateX(0); }
+	to { -webkit-transform: translateX(-100%); }
+}
+@-webkit-keyframes slideouttoright {
+	from { -webkit-transform: translateX(0); }
+	to { -webkit-transform: translateX(100%); }
+}
+@-webkit-keyframes slideouttobottom {
+	from { -webkit-transform: translateY(0); }
+	to { -webkit-transform: translateY(100%); }
+}
+
+@-webkit-keyframes slidefadeinfromright {
+	from {
+		-webkit-transform: translateX(60%);
+		opacity: 0;
+	}
+	to {
+		-webkit-transform: translateX(0);
+		opacity: 1;
+	}
+}
+@-webkit-keyframes slidefadeinfromleft {
+	from {
+		-webkit-transform: translateX(-60%);
+		opacity: 0;
+	}
+	to {
+		-webkit-transform: translateX(0);
+		opacity: 1;
+	}
+}
+@-webkit-keyframes slidefadeouttoleft {
+	from {
+		-webkit-transform: translateX(0);
+		opacity: 1;
+	}
+	to {
+		-webkit-transform: translateX(-60%);
+		opacity: 0;
+	}
+}
+@-webkit-keyframes slidefadeouttoright {
+	from {
+		-webkit-transform: translateX(0);
+		opacity: 1;
+	}
+	to {
+		-webkit-transform: translateX(60%);
+		opacity: 0;
+	}
+}
+
+@-webkit-keyframes fadein {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+@-webkit-keyframes fadeout {
+	from { opacity: 1; }
+	to { opacity: 0; }
+}
+
+@-webkit-keyframes backinfromcenter {
+	from {
+		-webkit-transform: translateX(200%);
+		opacity: 0;
+	}
+	to {
+		left: 0;
+		-webkit-transform: translateX(0);
+		opacity: 1;
+	}
+}
+@-webkit-keyframes backinfromleft {
+	from {
+		-webkit-transform: translateX(-100%);
+		opacity: 0;
+	}
+	to {
+		-webkit-transform: translateX(0);
+		opacity: 1;
+	}
+}
+@-webkit-keyframes backouttocenter {
+	from {
+		-webkit-transform: translateX(0);
+		opacity: 1;
+	}
+	to {
+		-webkit-transform: translateX(200%);
+		opacity: 0;
+	}
+}
+@-webkit-keyframes backouttoleft {
+	from {
+		-webkit-transform: translateX(0);
+		opacity: 1;
+	}
+	to {
+		-webkit-transform: translateX(-100%);
+		opacity: 0;
+	}
+}
