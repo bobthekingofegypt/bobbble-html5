@@ -10,7 +10,12 @@ define([
 
 		model: Shot,
 
-        url: "http://api.dribbble.com/shots/?per_page=30",
+        page: 1,
+
+        url: function() {
+            return "http://api.dribbble.com/shots/?per_page=30&page=" + this.page
+        },
+        //url: "http://api.dribbble.com/shots/?per_page=30",
     
         parse: function(resp) {
             return resp.shots;

@@ -24,11 +24,14 @@ define([
             if (this.shotList) {
                 transition.leftToRight('view-home', 'view-shot-details');
             }
+            if (!this.shotList) {
             var shotList = new ShotList();
-            shotList.fetch({success: function(){
-                $("#view-home section").html(new ShotListView({model: shotList}).el);
-            }});
+            $("#view-home section").html(new ShotListView({model: shotList}).el);
+            //shotList.fetch({success: function(){
+            //    $("#view-home section").html(new ShotListView({model: shotList}).el);
+            //}});
             this.shotList = shotList;
+            }
 		},
 
         shot: function(id) {
