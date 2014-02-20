@@ -44,7 +44,7 @@ require([
     'underscore',
     'transition',
     'views'
-], function (Backbone, Workspace, dust, _, transition) {
+], function (Backbone, Workspace) {
     'use strict';
     new Workspace();
     Backbone.history.start();
@@ -66,32 +66,5 @@ require([
         w.addEventListener('load', scrollTop, false);
     }
     document.getElementById('view-home').classList.remove('hidden');
-
-//document.addEventListener("touchmove", ScrollStart, false);
-//document.querySelector("#view-home section").addEventListener("scroll", Scroll, false);
-
-//function ScrollStart() {
-    //start of scroll event for iOS
-//}
-
-//function Scroll() {
- //   console.log("test");
-    //end of scroll event for iOS
-    //and
-    //start/end of scroll event for other browsers
-//}
-
-    _.delay(function() {
-        //router.navigate('shot', {trigger: true});
-        /*
-        transition({
-            'out': document.getElementById('view-home'),
-            'in': document.getElementById('view-shot-details'),
-            direction: 'rtl'
-        });
-        */
-    }, 1000);
-
-
 
 });

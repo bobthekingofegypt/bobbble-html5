@@ -98,11 +98,12 @@ header.fake,
 	border: 1px solid #fff;
 }
 .view>.scroll{
+	background-color: #f0f0f0;
+    background-repeat: repeat-x;
 	-webkit-box-flex: 1;
 	box-flex: 1;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
-	background-color: #fff;
 	display: -webkit-box;
 	display: box;
 	-webkit-box-orient: vertical;
@@ -267,6 +268,7 @@ body:not(.ios5) .view>.scroll:before{
 
 #comments {
     clear: both;
+	background-color: #f0f0f0;
 }
 
 #comments .comment {
@@ -289,6 +291,9 @@ body:not(.ios5) .view>.scroll:before{
 }
 
 
+#view-shot-details>.scroll {
+    background-image: url(../images/tex-bak.gif);
+}
 
 .view>header.transparent{
 	background: transparent none;

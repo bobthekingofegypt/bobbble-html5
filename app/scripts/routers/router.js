@@ -25,21 +25,17 @@ define([
                 transition.leftToRight('view-home', 'view-shot-details');
             }
             if (!this.shotList) {
-            var shotList = new ShotList();
-            $("#view-home section").html(new ShotListView({model: shotList}).el);
-            //shotList.fetch({success: function(){
-            //    $("#view-home section").html(new ShotListView({model: shotList}).el);
-            //}});
-            this.shotList = shotList;
+                var shotList = new ShotList();
+                $("#view-home section").html(new ShotListView({model: shotList}).el);
+                this.shotList = shotList;
             }
 		},
 
         shot: function(id) {
-            id = parseInt(id);
-            console.log("TEST");
-            console.log(id);
+            id = parseInt(id, 10);
 
             if (this.shotList) {
+                document.querySelector('#view-shot-details section').scrollTop = 0;
                 transition.rightToLeft('view-shot-details', 'view-home');
 
                 var entry = _.find(this.shotList.models, function(shot) {
@@ -50,16 +46,6 @@ define([
                 $('#view-shot-details section').html(new ShotDetailView({model: model}).el);
             } else {
                 this.navigate('', {trigger: true});
-                /*
-                var shotList = new ShotList();
-                shotList.fetch({success: function(){
-                    var entry = _.find(shotList.models, function(shot) {
-                        return shot.id == id;
-                    });
-                    $("#content2").html(new ShotDetailView({model: entry}).el);
-                }});
-                this.shotList = shotList;
-                */
             }
 
         }

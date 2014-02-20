@@ -1,11 +1,12 @@
 /*global define, dust*/
 define([
-	'jquery',
+    'jquery',
     'underscore',
-	'backbone',
-    'dust'
-], function ($, _, Backbone) {
-	'use strict';
+    'backbone',
+    'tappable',
+    'urltools'
+], function ($, _, Backbone, tappable, resizedImageUrl) {
+    'use strict';
 
     var ShotListView = Backbone.View.extend({
 
@@ -36,9 +37,9 @@ define([
 
         render: function () {
             var container = document.createElement("div");
+            container.id = "page" + this.model.page.toString();
 
-            var self = this;
-            dust.render("test",{ shots : this.internalList}, function(err, out) {
+            dust.render("shotlist",{ shots : this.internalList}, function(err, out) {
                 container.innerHTML = out;
             });
 
@@ -57,8 +58,7 @@ define([
             var shots = [];
             for (var i=(page-1)*30; i<(page*30); ++i) {
                 var model = models[i];
-                var imageUrl = encodeURIComponent(model.image_teaser_url);
-                var newImageUrl = "http://192.168.1.78:8080/server-core-0.1-SNAPSHOT/?url="+imageUrl+"&width=279&height=211&maintainAspectRatio=true&type=png";
+                var newImageUrl = resizedImageUrl(model.image_teaser_url, 279, 211);
 
                 shots.push({ 
                     shot_id: model.id,
@@ -67,10 +67,18 @@ define([
                 });
             }
 
-            var self = this;
-            dust.render("test",{ shots : shots}, function(err, out) {
+            dust.render("shotlist",{ shots : shots}, function(err, out) {
                 container.innerHTML = out;
             });
+
+            tappable('#page'+page+' .shot-list-entry a', {
+                noScroll: true,
+                noScrollDelay: 100,
+                onTap: function(e, target){
+                    location.hash = target.hash;
+                }
+            });
+ 
         },
 
         loadMore: function () {
@@ -84,7 +92,7 @@ define([
             });
         },
 
-        scroll: function(event) {
+        scroll: function() {
             var top = this.holder.scrollTop;
             if (top > (this.holder.scrollHeight - 
                        this.holder.clientHeight - 

@@ -11,15 +11,15 @@
 
     <div class="stats">
         <div class="stat">
-            <div class="stat-count">1979</div>
+            <div class="stat-count">{shot.views_count}</div>
             <div class="stat-label">views</div>
         </div>
         <div class="stat">
-            <div class="stat-count">304</div>
+            <div class="stat-count">{shot.likes_count}</div>
             <div class="stat-label">likes</div>
         </div>
         <div class="stat">
-            <div class="stat-count">21</div>
+            <div class="stat-count">{shot.comments_count}</div>
             <div class="stat-label">comments</div>
         </div>
     </div>
